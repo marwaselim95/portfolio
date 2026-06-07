@@ -1,0 +1,470 @@
+/* ===================================
+   DESIGN SYSTEM — Marwa Selim Portfolio
+   Aesthetic: Analytical · Structured · Neural
+   =================================== */
+
+/* CSS Custom Properties (Design Tokens) */
+:root {
+  /* Colors — Deep black + electric blue */
+  --bg-primary: #050508;
+  --bg-secondary: #0a0a10;
+  --bg-card: #0d0d14;
+  --bg-card-hover: #0d0d14;
+  --bg-sidebar: #08080e;
+
+  --text-primary: #e8e8f0;
+  --text-secondary: #8a8a9e;
+  --text-muted: #55556a;
+
+  /* Electric Blue Accent */
+  --accent: #00d4ff;
+  --accent-dim: rgba(0, 212, 255, 0.12);
+  --accent-glow: rgba(0, 212, 255, 0.25);
+  --accent-glow-strong: rgba(0, 212, 255, 0.5);
+
+  /* Gradient Palette (electric blue family) */
+  --gradient-start: #00d4ff;
+  --gradient-mid: #00a8e8;
+  --gradient-end: #0077b6;
+  --gradient-primary: linear-gradient(135deg, #00d4ff, #00a8e8);
+  --gradient-secondary: linear-gradient(135deg, #00a8e8, #0077b6);
+  --gradient-full: linear-gradient(135deg, #00d4ff, #00a8e8, #0077b6);
+  --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #00a8e8 50%, #0077b6 100%);
+  --gradient-reverse: linear-gradient(135deg, #0077b6, #00a8e8, #00d4ff);
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --sidebar-width: 72px;
+  --section-gap: 32px;
+  --card-padding: 48px;
+  --card-padding-mobile: 28px;
+  --border-radius: 16px;
+  --border-radius-sm: 8px;
+  --border-radius-xs: 4px;
+
+  /* Transitions */
+  --transition-fast: all 0.2s ease;
+  --transition-base: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+
+  /* Shadows */
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.08);
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===================================
+   NEURAL NETWORK BACKGROUND
+   =================================== */
+
+.neural-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===================================
+   VIBRANT GRADIENT BACKGROUND
+   =================================== */
+
+.vibrant-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: #030206;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+  isolation: isolate;
+}
+
+/* Subtle grid overlay to enhance high-tech/neural structure */
+.vibrant-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  z-index: 1;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%);
+}
+
+.vibrant-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.vibrant-orb-1 {
+  top: -10%;
+  left: -5%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, #00d4ff 0%, rgba(0, 212, 255, 0) 70%);
+  animation: orb-motion-1 30s ease-in-out infinite alternate;
+}
+
+.vibrant-orb-2 {
+  bottom: -15%;
+  right: -5%;
+  width: 65vw;
+  height: 65vw;
+  background: radial-gradient(circle, #7c3aed 0%, rgba(124, 58, 237, 0) 70%);
+  animation: orb-motion-2 35s ease-in-out infinite alternate;
+}
+
+.vibrant-orb-3 {
+  top: 30%;
+  right: 10%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, #d946ef 0%, rgba(217, 70, 239, 0) 70%);
+  animation: orb-motion-3 25s ease-in-out infinite alternate;
+}
+
+.vibrant-orb-4 {
+  bottom: 5%;
+  left: 15%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, #ff2a5f 0%, rgba(255, 42, 95, 0) 70%);
+  animation: orb-motion-4 32s ease-in-out infinite alternate;
+}
+
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--text-primary);
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.gradient-text {
+  background: var(--gradient-full);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+/* ===================================
+   LAYOUT
+   =================================== */
+
+#root {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  max-width: 1200px;
+}
+
+/* ===================================
+   CARD BASE (No hover effects)
+   =================================== */
+
+.card {
+  background: rgba(13, 13, 20, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--border-radius);
+  padding: var(--card-padding);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================
+   SECTION HEADINGS
+   =================================== */
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+/* ===================================
+   BUTTONS — Gradient hover effects
+   =================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  /* Gradient is rendered on a pseudo-element and faded in on hover */
+  isolation: isolate;
+}
+
+/* Shared hover gradient layer */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 60%, #d946ef 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.45), 0 0 40px rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 18px rgba(217, 70, 239, 0.35), 0 0 36px rgba(0, 212, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   ANIMATIONS (Keyframes)
+   =================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 212, 255, 0.15); }
+  50% { box-shadow: 0 0 24px rgba(0, 212, 255, 0.3); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes progress-fill {
+  from { width: 0%; }
+}
+
+@keyframes orb-motion-1 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(15%, 10%) scale(1.1) rotate(120deg);
+  }
+  100% {
+    transform: translate(-5%, 20%) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes orb-motion-2 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-10%, -15%) scale(1.2) rotate(-180deg);
+  }
+  100% {
+    transform: translate(10%, -5%) scale(0.9) rotate(-360deg);
+  }
+}
+
+@keyframes orb-motion-3 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-20%, 5%) scale(0.85) rotate(90deg);
+  }
+  100% {
+    transform: translate(5%, -15%) scale(1.1) rotate(180deg);
+  }
+}
+
+@keyframes orb-motion-4 {
+  0% {
+    transform: translate(0, 0) scale(1.1) rotate(0deg);
+  }
+  50% {
+    transform: translate(10%, -10%) scale(0.9) rotate(-120deg);
+  }
+  100% {
+    transform: translate(-15%, 15%) scale(1.15) rotate(-240deg);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 24px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 80px 16px 24px 16px;
+  }
+
+  .card {
+    padding: var(--card-padding-mobile);
+  }
+
+  .section-heading {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 72px 12px 20px 12px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+  }
+}

@@ -1,0 +1,92 @@
+/* ===================================
+   LANGUAGES CARD — Radial rings, no hover
+   =================================== */
+
+.languages {
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.35s;
+  opacity: 0;
+}
+
+.languages-grid {
+  display: flex;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+
+/* Language Ring */
+.language-ring-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.language-ring--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.language-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-ring-svg {
+  position: absolute;
+  inset: 0;
+}
+
+.language-progress-ring {
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: stroke-dashoffset;
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.4));
+}
+
+.language-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  z-index: 1;
+}
+
+.language-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.language-level {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+  .languages-grid {
+    gap: 32px;
+  }
+
+  .language-ring {
+    width: 120px;
+    height: 120px;
+  }
+
+  .language-ring-svg {
+    width: 120px;
+    height: 120px;
+  }
+}
