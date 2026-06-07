@@ -8,7 +8,7 @@ const defaultProjects = [
     description:
       'A neuroscience-based language acquisition app utilizing implicit learning methodology.',
     techStack: ['React', 'TypeScript', 'PWA'],
-    url: 'https://github.com',
+    url: 'https://lexi-flow-in-progress.vercel.app/',
   },
   {
     image: '/images/projectgym.png',
