@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import './ProjectCard.css';
 
 export default function ProjectCard({
@@ -7,10 +8,32 @@ export default function ProjectCard({
   techStack = [],
   index = 0,
 }) {
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Trigger animation only when card scrolls into view
+          card.style.animationDelay = `${index * 0.15}s`;
+          card.classList.add('project-card--visible');
+          observer.unobserve(card);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [index]);
+
   return (
     <article
+      ref={cardRef}
       className="project-card"
-      style={{ animationDelay: `${index * 0.15}s` }}
       id={`project-card-${index}`}
     >
       <div className="project-card-image-wrapper">
