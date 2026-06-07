@@ -6,6 +6,7 @@ export default function ProjectCard({
   title,
   description,
   techStack = [],
+  url = '#',
   index = 0,
 }) {
   const cardRef = useRef(null);
@@ -31,34 +32,42 @@ export default function ProjectCard({
   }, [index]);
 
   return (
-    <article
-      ref={cardRef}
-      className="project-card"
-      id={`project-card-${index}`}
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-card-link"
+      aria-label={`View ${title} project`}
     >
-      <div className="project-card-image-wrapper">
-        <img
-          src={image}
-          alt={title}
-          className="project-card-image"
-          loading="lazy"
-        />
-      </div>
+      <article
+        ref={cardRef}
+        className="project-card"
+        id={`project-card-${index}`}
+      >
+        <div className="project-card-image-wrapper">
+          <img
+            src={image}
+            alt={title}
+            className="project-card-image"
+            loading="lazy"
+          />
+        </div>
 
-      <div className="project-card-body">
-        <h3 className="project-card-title">{title}</h3>
-        <p className="project-card-description">{description}</p>
+        <div className="project-card-body">
+          <h3 className="project-card-title">{title}</h3>
+          <p className="project-card-description">{description}</p>
 
-        {techStack.length > 0 && (
-          <div className="project-card-tags">
-            {techStack.map((tech) => (
-              <span key={tech} className="project-card-tag">
-                {tech}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    </article>
+          {techStack.length > 0 && (
+            <div className="project-card-tags">
+              {techStack.map((tech) => (
+                <span key={tech} className="project-card-tag">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </article>
+    </a>
   );
 }

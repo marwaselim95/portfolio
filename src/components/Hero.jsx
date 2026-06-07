@@ -12,7 +12,7 @@ export default function Hero() {
         <div className="hero-image-wrapper">
           <div className="hero-image-ring">
             <img
-              src={profile}
+              src="/images/profile1.jpg"
               alt="Marwa Selim's profile"
               className="hero-image"
               loading="eager"

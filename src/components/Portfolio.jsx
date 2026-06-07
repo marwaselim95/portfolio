@@ -3,25 +3,28 @@ import './Portfolio.css';
 
 const defaultProjects = [
   {
-    image: '/images/project1.png',
+    image: '/images/lex.png',
     title: 'LexiFlow',
     description:
       'A neuroscience-based language acquisition app utilizing implicit learning methodology.',
     techStack: ['React', 'TypeScript', 'PWA'],
+    url: 'https://github.com',
   },
   {
-    image: '/images/project2.png',
-    title: 'ShopVista',
+    image: '/images/projectgym.png',
+    title: 'GYM progress tracking system',
     description:
-      'A comprehensive analytics dashboard for e-commerce operations with real-time sales tracking and inventory management.',
-    techStack: ['Vue', 'Node.js', 'MongoDB'],
+      'A comprehensive analytics dashboard for GYM operations.',
+    techStack: ['HTML', 'CSS', 'JS'],
+    url: 'https://hyper-engine-six.vercel.app/',
   },
   {
-    image: '/images/project3.png',
-    title: 'ConnectHub',
+    image: '/images/RFT.png',
+    title: 'Relational Logic training',
     description:
-      'A modern social platform with real-time messaging, content sharing, and community engagement features.',
-    techStack: ['React', 'GraphQL', 'PostgreSQL'],
+      'Relational logic training webapplication using SMART training.',
+    techStack: ['HTML', 'CSS', 'JS', 'React'],
+    url: 'https://rft-training.vercel.app/',
   },
 ];
 
@@ -39,6 +42,7 @@ export default function Portfolio({ projects = defaultProjects }) {
             title={project.title}
             description={project.description}
             techStack={project.techStack}
+            url={project.url}
             index={index}
           />
         ))}

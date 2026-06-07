@@ -2,6 +2,14 @@
    PROJECT CARD — Interactive hover
    =================================== */
 
+.project-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  border-radius: var(--border-radius);
+}
+
 .project-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
